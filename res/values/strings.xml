@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, TestTerm2!</string>
+    <string name="app_name">A better example of a terminal application</string>
+<string name="Enter_key">enter</string>
+<string name="Prompt_Box">prompt</string>
+</resources>
