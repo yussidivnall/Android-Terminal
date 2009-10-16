@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.text.method.KeyListener;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -42,6 +45,8 @@ public class TestTerm2 extends Activity {
         
         termOut = (TextView)findViewById(R.id.termOutput);
         prompt_box = (EditText)findViewById(R.id.Input);
+
+        
         
         enter_button = (Button)findViewById(R.id.enter);
         enter_button.setOnClickListener(new OnClickListener(){
@@ -72,12 +77,13 @@ public class TestTerm2 extends Activity {
         term.exec("echo 'a shell of a shell!' \n");
         
     }
-    protected void onKeyDown(TextView t){
-    	
-    }
+    
     public void scrollDown(){
-		ScrollView sv = (ScrollView)findViewById(R.id.ScrollView01);
-		//sv.fullScroll(ScrollView.FOCUS_DOWN);
-		sv.scrollTo(0, termOut.getHeight());
+		final ScrollView sv = (ScrollView)findViewById(R.id.ScrollView01);
+		sv.post(new Runnable(){ // ugly but works!!!!
+			public void run(){
+				sv.fullScroll(ScrollView.FOCUS_DOWN);
+			}
+		});
     }
 }

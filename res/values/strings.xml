@@ -4,4 +4,9 @@
     <string name="app_name">A better example of a terminal application</string>
 <string name="Enter_key">enter</string>
 <string name="Prompt_Box">prompt</string>
+
+
+<string name="termOut_background_color">#000000</string>
+<string name="Enter_key_background_color">#0000ca</string>
+<string name="Enter_key_text_color">#ffffff</string>
 </resources>
