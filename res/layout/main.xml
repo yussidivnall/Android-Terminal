@@ -23,6 +23,7 @@
 					android:layout_height="fill_parent" 
 					android:layout_weight="1" android:editable="false" 
 					android:textSize="@dimen/out_text_size" />	
+					android:imeOptions="actionSend|flagNoEnterAction"
 			</ScrollView>
 </LinearLayout>
 	<LinearLayout 
@@ -31,7 +32,7 @@
 		android:layout_weight="1"
 		android:orientation="horizontal" android:layout_width="wrap_content">
 		<Button android:text="@string/Enter_key" android:id="@+id/enter" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="fill" android:background="#0000ca" android:clickable="true" android:textColor="#ffffff"></Button>		
-		<EditText android:text="@string/Prompt_Box" android:id="@+id/Input" android:layout_width="fill_parent" android:layout_gravity="fill" android:layout_height="wrap_content" android:background="#000000" android:textColor="#aaaa00" ></EditText>
+		<EditText android:text="@string/Prompt_Box" android:id="@+id/Input" android:layout_width="fill_parent" android:layout_gravity="fill" android:layout_height="wrap_content" android:background="#000000" android:textColor="#aaaa00" android:imeOptions="actionSend|flagNoEnterAction"></EditText>
 
 	</LinearLayout>
 
