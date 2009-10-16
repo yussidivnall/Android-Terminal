@@ -14,13 +14,15 @@
 		android:orientation="horizontal">
 
 			<ScrollView android:id="@+id/ScrollView01" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scrollbarAlwaysDrawVerticalTrack="true">
-				<TextView 
+				<EditText 
 					android:text=""
-					android:background="#000000" 
+					android:textColor="@color/out_text_color"
+					android:background="@color/out_back_color"
 					android:id="@+id/termOutput" 
 					android:layout_width="fill_parent" 
 					android:layout_height="fill_parent" 
-					android:layout_weight="1"/>	
+					android:layout_weight="1" android:editable="false" 
+					android:textSize="@dimen/out_text_size" />	
 			</ScrollView>
 </LinearLayout>
 	<LinearLayout 

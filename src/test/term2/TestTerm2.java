@@ -1,12 +1,16 @@
 package test.term2;
 
 import android.app.Activity;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.text.Editable;
+import android.text.Spannable;
 import android.text.TextWatcher;
 import android.text.method.KeyListener;
+import android.text.style.StyleSpan;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -20,7 +24,7 @@ import android.widget.TextView;
 public class TestTerm2 extends Activity {
 	
 	
-	TextView termOut;
+	EditText termOut;
 	EditText termIn;
 	
 	Button enter_button;
@@ -43,7 +47,7 @@ public class TestTerm2 extends Activity {
         setContentView(R.layout.main);
         startThread();
         
-        termOut = (TextView)findViewById(R.id.termOutput);
+        termOut = (EditText)findViewById(R.id.termOutput);
         prompt_box = (EditText)findViewById(R.id.Input);
 
         
@@ -54,20 +58,16 @@ public class TestTerm2 extends Activity {
 				enter_pressed();
 			}
         });
-        
-        
-        
-        
     }
     
     public void enter_pressed(){
 		String cmd = prompt_box.getText().toString();
-		//termOut.setTextColor(0x00ff00);
+		//Spannable s = prompt_box.getText();
+		//s.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+		
 		termOut.append(cmd+"\n");
 		term.exec(cmd+"\n");    	
 		scrollDown();
-
-		//sv.scrollTo(0, sv.getBaseline());
     }
     
     

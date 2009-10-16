@@ -5,8 +5,7 @@
 <string name="Enter_key">enter</string>
 <string name="Prompt_Box">prompt</string>
 
-
-<string name="termOut_background_color">#000000</string>
-<string name="Enter_key_background_color">#0000ca</string>
-<string name="Enter_key_text_color">#ffffff</string>
+<color name="out_text_color">#00cc00</color>
+<color name="out_back_color">#000000</color>
+<dimen name="out_text_size">12sp</dimen>
 </resources>
