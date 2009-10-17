@@ -2,10 +2,9 @@
 <resources>
     <string name="hello">Hello World, TestTerm2!</string>
     <string name="app_name">A better example of a terminal application</string>
-<string name="Enter_key">enter</string>
-<string name="Prompt_Box">prompt</string>
-
-<color name="out_text_color">#00cc00</color>
-<color name="out_back_color">#000000</color>
-<dimen name="out_text_size">12sp</dimen>
+	<string name="Enter_key">enter</string>
+	<string name="Prompt_Box">prompt</string>
+	<color name="out_text_color">#00cc00</color>
+	<color name="out_back_color">#000000</color>
+	<dimen name="out_text_size">12sp</dimen>
 </resources>

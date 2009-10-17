@@ -16,9 +16,11 @@ import android.text.method.KeyListener;
 import android.text.style.StyleSpan;
 import android.view.KeyEvent;
 import android.view.Menu;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
+import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.MultiAutoCompleteTextView;
@@ -35,26 +37,16 @@ public class TestTerm2 extends Activity {
 	Button enter_button;
 	EditText prompt_box;
 	
-	ArrayList<String> localHistory;
+	ArrayList<String> localHistory = new ArrayList<String>();
 	int localHistoryIndex=0;
-	Iterator localHistoryIterator;
 	
 	termThread term;
     public Handler handle = new Handler(){
     	public void handleMessage(Message msg){
     		termOut.append((String)msg.obj);
     		scrollDown();
+    		prompt_box.requestFocusFromTouch();
     	}
-    };
-	
-    public OnClickListener termOut_onClicklsn = new OnClickListener(){
-    	int spacing_mode = 0; // only spaces
-		public void onClick(View arg0) {
-			// TODO Auto-generated method stub
-			// TODO Add a copy paste menu
-			
-		}
-		    	
     };
 	
     /** Called when the activity is first created. */	
@@ -65,10 +57,29 @@ public class TestTerm2 extends Activity {
         startThread();
         
         termOut = (EditText)findViewById(R.id.termOutput);
-        termOut.setOnClickListener(termOut_onClicklsn);
+        termOut.setFocusable(false);
+        termOut.setOnTouchListener(new OnTouchListener(){
+			public boolean onTouch(View v, MotionEvent event) {
+				termOut.setFocusable(true);
+				prompt_box.setFocusable(false);
+				termOut.requestFocus();
+				return true;
+			}
+        });
+        
+        //termOut.setOnClickListener(termOut_onClicklsn);
         
         prompt_box = (EditText)findViewById(R.id.Input);
-        
+        prompt_box.setOnTouchListener(new OnTouchListener(){
+
+			public boolean onTouch(View v, MotionEvent event) {
+				termOut.setFocusable(false);
+				prompt_box.setFocusable(true);
+				prompt_box.requestFocus();
+				return true;
+			}
+        });
+
         
         
         enter_button = (Button)findViewById(R.id.enter);
@@ -83,19 +94,18 @@ public class TestTerm2 extends Activity {
     	return false;
     }
     public boolean onKeyDown(int keyCode,KeyEvent event){
-    	super.onKeyDown(keyCode, event);
+    	//super.onKeyDown(keyCode, event);
     	//prompt_box.setText(""+event.);
     	switch(keyCode){
+    		case KeyEvent.KEYCODE_DPAD_DOWN:
+    			retriveHistory(false);
+    			return true;
     		case KeyEvent.KEYCODE_DPAD_UP:
-    			if(!localHistory.isEmpty() && localHistoryIndex > 0){
-    				String c = localHistory.get(localHistoryIndex);
-    				prompt_box.setText(c);
-    				localHistoryIndex--;
-    			}
-    		return true;
-//    		case KeyEvent.KEYCODE_ENTER:
-//    			prompt_box.setText("Ah ahaha");
-//    			return true;
+    			retriveHistory(true);
+    			prompt_box.setSelected(true);
+    			termOut.setSelected(false);
+    			
+    			return true;
     		case KeyEvent.KEYCODE_DPAD_CENTER:
     			prompt_box.setText("DPAD_CENTER");
     			return true;
@@ -103,17 +113,12 @@ public class TestTerm2 extends Activity {
     			prompt_box.setText("66");
     			return true;
     	}
-    	
-    	if(event.getKeyCode()==KeyEvent.KEYCODE_DPAD_CENTER){
-    		prompt_box.setText("Ah ahaha");
-    		enter_pressed();
-    		return true;
-    	}
-    	//return false;
+    	//return true;
     	return super.onKeyDown(keyCode, event);
     }
     
     public void enter_pressed(){
+    	
 		String cmd = prompt_box.getText().toString();
 		//Spannable s = prompt_box.getText();
 		//s.setSpan(new StyleSpan(android.graphics.Typeface.ITALIC), 0, s.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -122,10 +127,26 @@ public class TestTerm2 extends Activity {
 		addHistory(cmd);
 		term.exec(cmd+"\n");    	
 		scrollDown();
+		prompt_box.selectAll();
+		prompt_box.requestFocusFromTouch();
     }
     public void addHistory(String cmd){
-    	//localHistory.add(cmd);
-    	//localHistoryIndex++;
+    	localHistory.add(cmd);
+    	localHistoryIndex=localHistory.size();
+    }
+    public void retriveHistory(boolean up){
+    	if(up){
+    		if(localHistoryIndex > 0){
+    			localHistoryIndex--;
+    			prompt_box.setText(""+localHistory.get(localHistoryIndex));
+    		}
+    	}else{
+    		if(localHistoryIndex < localHistory.size()){    			
+    			prompt_box.setText(""+localHistory.get(localHistoryIndex));
+    			localHistoryIndex++;
+    		}    		
+    	}
+    	//prompt_box.setText("Got me here!!!! motherfucker");
     }
     
     public void startThread(){
@@ -143,5 +164,6 @@ public class TestTerm2 extends Activity {
 				sv.fullScroll(ScrollView.FOCUS_DOWN);
 			}
 		});
+		sv.setFocusable(false);
     }
 }
