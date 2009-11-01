@@ -27,6 +27,7 @@ public class termThread extends Thread implements Runnable {
 			stdOut = new DataInputStream(process.getInputStream());
 			stdErr = new DataInputStream(process.getErrorStream());
 			
+			
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

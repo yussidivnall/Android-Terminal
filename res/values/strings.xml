@@ -6,5 +6,8 @@
 	<string name="Prompt_Box">prompt</string>
 	<color name="out_text_color">#00cc00</color>
 	<color name="out_back_color">#000000</color>
-	<dimen name="out_text_size">12sp</dimen>
+	<dimen name="out_text_size">12sp</dimen>	
+	<dimen name="CommandOptionsTab">100px</dimen>
+	<dimen name="in_text_size">10sp</dimen>
+	<string name="action_prompt">action:</string>
 </resources>

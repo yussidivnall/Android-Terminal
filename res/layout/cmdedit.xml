@@ -1,0 +1,47 @@
+<LinearLayout 
+	android:id="@+id/LinearLayout01" 
+	android:layout_width="fill_parent" 
+	android:layout_height="fill_parent" 
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:orientation="vertical">
+	
+	<LinearLayout 
+		android:id="@+id/LinearLayout02" 
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:layout_weight="0.1"
+		android:orientation="horizontal">
+		<LinearLayout 
+			android:id="@+id/TermOutLayout" 
+			android:layout_width="fill_parent" 
+			android:layout_height="fill_parent"
+			android:layout_weight="0.1"
+			android:orientation="horizontal">
+			<EditText 
+				android:text="Revolution"
+				android:background="#aa0000" 
+				android:id="@+id/termOut1" 
+				android:layout_width="wrap_content" 
+				android:layout_height="fill_parent" 
+				android:layout_weight="1"/>
+		</LinearLayout>
+		<LinearLayout 
+			android:id="@+id/OptionsLayout" 
+			android:layout_width="150px" 
+			android:layout_height="fill_parent"
+			android:layout_weight="0.1"
+			android:orientation="horizontal">
+			<ListView android:id="@+id/CommandProfiles" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+		</LinearLayout>
+	</LinearLayout>
+	
+	<!-- Command line -->
+	<LinearLayout 
+		android:id="@+id/LinearLayout03" 	
+		android:layout_width="fill_parent" 
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		android:orientation="vertical">
+		<MultiAutoCompleteTextView android:text="@+id/InputLine" android:id="@+id/Input" android:layout_width="fill_parent" android:layout_gravity="fill" android:layout_height="wrap_content" android:background="#000000" android:textColor="#aaaa00" ></MultiAutoCompleteTextView>
+	</LinearLayout>
+</LinearLayout>

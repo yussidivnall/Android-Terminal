@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnKeyListener;
+import android.view.View.OnLongClickListener;
 import android.view.View.OnTouchListener;
 import android.widget.Button;
 import android.widget.EditText;
@@ -41,6 +43,8 @@ public class TestTerm2 extends Activity {
 	int localHistoryIndex=0;
 	
 	termThread term;
+	CommandEditor cmdEditor;
+	
     public Handler handle = new Handler(){
     	public void handleMessage(Message msg){
     		termOut.append((String)msg.obj);
@@ -54,7 +58,9 @@ public class TestTerm2 extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
+        
         startThread();
+        
         
         termOut = (EditText)findViewById(R.id.termOutput);
         termOut.setFocusable(false);
@@ -70,14 +76,26 @@ public class TestTerm2 extends Activity {
         //termOut.setOnClickListener(termOut_onClicklsn);
         
         prompt_box = (EditText)findViewById(R.id.Input);
+        
         prompt_box.setOnTouchListener(new OnTouchListener(){
-
 			public boolean onTouch(View v, MotionEvent event) {
 				termOut.setFocusable(false);
 				prompt_box.setFocusable(true);
 				prompt_box.requestFocus();
 				return true;
 			}
+        });
+        //cmdEditor = new CommandEditor(termOut,prompt_box);
+        prompt_box.setOnLongClickListener(new OnLongClickListener(){
+			public boolean onLongClick(View v) {
+				//prompt_box.setText("Long click");
+				Intent i = new Intent(TestTerm2.this,CommandEditor.class);
+				i.putExtra("termOutTXT", termOut.getText().toString());
+				i.putExtra("prompt_boxTXT", prompt_box.getText().toString());
+				startActivity(i);
+				return true;
+			}
+        	
         });
 
         
@@ -88,6 +106,7 @@ public class TestTerm2 extends Activity {
 				enter_pressed();
 			}
         });
+        term.exec("export PATH=$PATH:/data/ybin \n");
     }
     public boolean onCreateOptionsMenu(Menu menu){
 		
