@@ -25,14 +25,14 @@
 		<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
 			<EditText
 				android:id="@+id/deliminator"
-				android:text="delim"
+				android:text=" "
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"></EditText>
 			<EditText
-				android:id="@+id/output_tv"
+				android:id="@+id/output_et"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
-				android:text="action"></EditText>
+				android:text=""></EditText>
 		</LinearLayout>
 	<ListView
 	  android:layout_width="wrap_content"

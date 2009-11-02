@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<string-array name="select_actions">
+		<item>buffer</item>
 		<item>export SEL</item>
 		<item>insert to table NAME/VAL</item>
 		<item>browse</item>

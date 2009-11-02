@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical">
+	<!-- Table Name -->  
+	<LinearLayout
+	  android:layout_width="wrap_content"
+	  android:layout_height="wrap_content"
+	  android:orientation="horizontal">
+	  <EditText android:id="@+id/insert_db_name" android:layout_width="wrap_content" android:layout_height="wrap_content"></EditText>
+	  <EditText android:id="@+id/insert_db_table_name" android:layout_width="wrap_content" android:layout_height="wrap_content"></EditText>
+	  <Button android:id="@+id/insert_db_sel_button" android:text="Select *" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	</LinearLayout>	
+	<!-- Table Contents -->
+	<LinearLayout
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:orientation="horizontal">
+	  <ListView android:id="@+id/insert_db_lv" android:layout_width="wrap_content" android:layout_height="wrap_content"></ListView>
+	</LinearLayout>	
+	<!-- Insert Statement -->
+	<LinearLayout
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:orientation="horizontal">
+	  <Button android:id="@+id/insert_db_ok" android:text="ok" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	  <EditText android:id="@+id/insert_db_et" android:layout_width="wrap_content" android:layout_height="wrap_content"></EditText>
+	  <Button android:id="@+id/insert_db_cancel" android:text="cancel" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+	</LinearLayout>	
+	<!-- Errors -->
+	<LinearLayout
+	  android:layout_width="fill_parent"
+	  android:layout_height="wrap_content"
+	  android:orientation="horizontal">
+	  <EditText android:id="@+id/insert_db_err_et" android:layout_width="wrap_content" android:layout_height="wrap_content"></EditText>
+	</LinearLayout>	
+	
+</LinearLayout>

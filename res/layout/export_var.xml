@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content"
+  android:orientation="vertical">
+	<EditText android:id="@+id/export_output" android:text="" android:layout_width="fill_parent" android:layout_height="wrap_content"></EditText>
+	<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+		<Button android:id="@+id/export_ok" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="ok"></Button>
+		<Button android:id="@+id/export_cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="cancel"></Button>
+	</LinearLayout>
+</LinearLayout>
